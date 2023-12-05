@@ -37,6 +37,43 @@ namespace GQ.DAL
 
             }
         }
+        
+        public  bool UpdateQuestionTemplate(QuestionTemplate questionTemplate)//update
+        {
+            try
+            {
+                using (LiteDatabase db = new LiteDatabase(_Path))
+                {
+                    var res = db.GetCollection<QuestionTemplate>("QuestionTemplate");
+
+                    res.Update(questionTemplate);
+                }
+                return true;
+            }
+
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        public bool DeleteQuestionTemplate(int id)
+        {
+            try
+            {
+                using (LiteDatabase db = new LiteDatabase(_Path))
+                {
+                    var res =  db.GetCollection<QuestionTemplate>();
+                    res.Delete(id);
+                }
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+      
 
         public List<QuestionTemplate> GetQuestionTemplates() //get
         {

@@ -9,18 +9,11 @@ namespace GQ.DAL
 {
     public class Repository
     {
-        private string _Path = @"C:\Users\TEMP\GeneratorQuestions.db";
-
-        public Repository(string path)
-        {
-            _Path = path;
-        }
-
-        public bool AddQuestionTemplate(QuestionTemplate questionTemplate)//add
+        public bool CreateQuestionTemplate(QuestionTemplate questionTemplate)//add
         {
             try
             {
-                using (LiteDatabase db = new LiteDatabase(_Path))
+                using (LiteDatabase db = new LiteDatabase(@"C:\Users\TEMP\GeneratorQuestions.db"))
                 {
                     var res = db.GetCollection<QuestionTemplate>("QuestionTemplate");
 
@@ -42,7 +35,7 @@ namespace GQ.DAL
         {
             try
             {
-                using (LiteDatabase db = new LiteDatabase(_Path))
+                using (LiteDatabase db = new LiteDatabase(@"C:\Users\TEMP\GeneratorQuestions.db"))
                 {
                     var res = db.GetCollection<QuestionTemplate>("QuestionTemplate");
 
@@ -61,7 +54,7 @@ namespace GQ.DAL
         {
             try
             {
-                using (LiteDatabase db = new LiteDatabase(_Path))
+                using (LiteDatabase db = new LiteDatabase(@"C:\Users\TEMP\GeneratorQuestions.db"))
                 {
                     var res =  db.GetCollection<QuestionTemplate>();
                     res.Delete(id);
@@ -79,7 +72,7 @@ namespace GQ.DAL
         {
             try
             {
-                using (LiteDatabase db = new LiteDatabase(_Path))
+                using (LiteDatabase db = new LiteDatabase(@"C:\Users\TEMP\GeneratorQuestions.db"))
                 {
                     var res = db.GetCollection<QuestionTemplate>();
 

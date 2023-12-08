@@ -24,21 +24,27 @@ namespace GQ.BLL
             if(questionTemplate!=null)
             {
                 Console.WriteLine("Шаблон добавлен успешно");
+                
+                return true;
             }
+
+           
             else
             {
                 Console.WriteLine("Шаблон не добавился!");
             }
-            return result;
+            return false;
            
         }
 
         public List<QuestionTemplate> GetTemplates()
         {
+          
+
             Repository repository = new Repository();
 
             var result  = repository.GetQuestionTemplates();
-            
+
             return result;
         }
 

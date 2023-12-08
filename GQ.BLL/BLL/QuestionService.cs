@@ -2,6 +2,7 @@
 using GQ.DAL.Model;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -20,6 +21,14 @@ namespace GQ.BLL
 
             var result = repository.CreateQuestionTemplate(questionTemplate);
 
+            if(questionTemplate!=null)
+            {
+                Console.WriteLine("Шаблон добавлен успешно");
+            }
+            else
+            {
+                Console.WriteLine("Шаблон не добавился!");
+            }
             return result;
            
         }
@@ -33,5 +42,8 @@ namespace GQ.BLL
             return result;
         }
 
+
+      
+       
     }
 }

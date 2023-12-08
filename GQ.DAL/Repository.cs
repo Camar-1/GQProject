@@ -1,4 +1,5 @@
 ﻿using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
@@ -20,7 +21,7 @@ namespace GQ.DAL
                     res.Insert(questionTemplate);
                 }
 
-                return true;
+                return true ;
 
             }
             catch (Exception)

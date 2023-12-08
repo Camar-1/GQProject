@@ -36,6 +36,13 @@ namespace GQ.BLL
             return false;
            
         }
+        public bool FindTemplateQuestion(QuestionService questionService)
+        { 
+
+            
+        
+            return 
+        }
 
         public List<QuestionTemplate> GetTemplates()
         {

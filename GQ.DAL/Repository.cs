@@ -67,6 +67,22 @@ namespace GQ.DAL
                 return false;
             }
         }
+        public bool  FindQuestionTemplate(int id)
+        {
+            try
+            {
+                using(LiteDatabase db = new LiteDatabase(@"C:\Users\TEMP\GeneratorQuestions.db"))
+                {
+                    var res = db.GetCollection<QuestionTemplate>();
+                    res.FindById(id); 
+                    return true; 
+                }
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
       
 
         public List<QuestionTemplate> GetQuestionTemplates() //get
@@ -86,6 +102,7 @@ namespace GQ.DAL
                 return null;
             }
         }
+
     }
 }
            

@@ -41,8 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BLL\CheckGeneratorQuestion.cs" />
-    <Compile Include="BLL\QuestionGeneratorService.cs" />
+    <Compile Include="BLL\QuestionService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

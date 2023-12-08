@@ -13,7 +13,7 @@ namespace GQ.DAL
         public DateTime CreateTime { get; set; }
         public string QuestionText { get; set; }
         public Category category { get; set; }
-        public List<string> Blanks { get; set; }
+    
 
     }
 }

@@ -50,7 +50,7 @@ namespace GQ.DAL
             }
         }
 
-        public bool DeleteQuestionTemplate(int id)
+        public bool DeleteQuestionTemplate(int id)//drop
         {
             try
             {

@@ -22,6 +22,7 @@ namespace GQ.BLL
             var result = repository.CreateQuestionTemplate(questionTemplate);
 
             if(questionTemplate!=null)
+                if(result==true)
             {
                 Console.WriteLine("Шаблон добавлен успешно");
                 
@@ -36,20 +37,26 @@ namespace GQ.BLL
             return false;
            
         }
-        public bool FindTemplateQuestion(QuestionService questionService)
+        public bool FindTemplateQuestion()
         {
 
             Repository repository = new Repository();
 
             var result = repository.FindQuestionTemplate(1);
-            if (questionService != null)
-            {
+           
+           
+              if( result==true)
+            { 
+                Console.WriteLine("Шаблон найден");
+               
                 return true;
             }
             else
-                return false;
-        
+
+                Console.WriteLine("Шаблон не найден!");
+                
             
+            return false;
         }
 
         public List<QuestionTemplate> GetTemplates()

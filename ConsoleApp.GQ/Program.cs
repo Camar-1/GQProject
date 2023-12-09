@@ -18,7 +18,12 @@ namespace ConsoleApp.GQ
           QuestionTemplate questionTemplate = new QuestionTemplate();
 
             Random rnd = new Random();
-            var result = Console.ReadLine();
+            questionTemplate.QuestionText = Console.ReadLine();
+            Console.WriteLine(questionTemplate.QuestionText);
+            
+
+            
+            
 
    
         }

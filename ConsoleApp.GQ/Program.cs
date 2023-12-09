@@ -13,19 +13,40 @@ namespace ConsoleApp.GQ
     {
         static void Main(string[] args)
         {
-          QuestionService questionService = new QuestionService();
-          
-          QuestionTemplate questionTemplate = new QuestionTemplate();
+            QuestionService questionService = new QuestionService();
+
+            QuestionTemplate questionTemplate = new QuestionTemplate();
 
             Random rnd = new Random();
-            questionTemplate.QuestionText = Console.ReadLine();
-            Console.WriteLine(questionTemplate.QuestionText);
-            
+
+
+            if (!string.IsNullOrWhiteSpace(Console.ReadLine()))
+            {
+                string text = Console.ReadLine();
+
+                questionTemplate.category.Name = text;
+            }
+
+
+            else
+            {
+
+                Console.WriteLine("Необходимо вести данные");
+                string text = Console.ReadLine();
+
+
+
+
+
+
+                Console.WriteLine(questionTemplate.category.Name);
+
+
+
 
             
-            
 
-   
+            }
         }
     }
 }

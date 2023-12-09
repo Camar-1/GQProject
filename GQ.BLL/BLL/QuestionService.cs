@@ -37,11 +37,19 @@ namespace GQ.BLL
            
         }
         public bool FindTemplateQuestion(QuestionService questionService)
-        { 
+        {
 
-            
+            Repository repository = new Repository();
+
+            var result = repository.FindQuestionTemplate(1);
+            if (questionService != null)
+            {
+                return true;
+            }
+            else
+                return false;
         
-            return 
+            
         }
 
         public List<QuestionTemplate> GetTemplates()

@@ -75,10 +75,14 @@ namespace GQ.DAL
                 {
                     var res = db.GetCollection<QuestionTemplate>();
                     res.FindById(id); 
-                    return true; 
-                }
+                   
+                } 
+               
+                return true; 
             }
+            
             catch (Exception)
+            
             {
                 return false;
             }

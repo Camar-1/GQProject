@@ -37,12 +37,12 @@ namespace GQ.BLL
             return false;
            
         }
-        public bool FindTemplateQuestion()
+        public bool FindTemplateQuestion(int id)
         {
 
             Repository repository = new Repository();
 
-            var result = repository.FindQuestionTemplate(1);
+            var result = repository.FindQuestionTemplate(id);
            
            
               if( result==true)

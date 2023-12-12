@@ -5,6 +5,7 @@ using System.Data;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
+using System.Runtime.Remoting;
 using System.Runtime.Remoting.Messaging;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
@@ -20,49 +21,25 @@ namespace GQ.BLL
 
             var result = repository.CreateQuestionTemplate(questionTemplate);
 
-            if(questionTemplate!=null)
-               
-                if(result==true)
-            {
-                Console.WriteLine("Шаблон добавлен успешно");
-                
-                return true;
-            }
+            if (questionTemplate != null)
 
-           
-            else
-            {
+                if (result == true)
+                {
+                    Console.WriteLine("Шаблон добавлен успешно");
+
+                    return true;
+                }
+
+
+                else
+                {
 
                     Console.WriteLine("Шаблон не добавился!");
-                        
-                       
-            }
-             return false;
-            
-            
-           
-           
-        }
-        public bool FindTemplateQuestion(int id)
-        {
 
-            Repository repository = new Repository();
 
-            var result = repository.FindQuestionTemplate(id);
-           
-           
-              if( result==true)
-            { 
-                Console.WriteLine("Шаблон найден");
-               
-                return true;
-            }
-            else
-
-                Console.WriteLine("Шаблон не найден!");
-                
-            
+                }
             return false;
+
         }
 
         public bool DeleteTemplate(int Id)

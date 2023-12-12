@@ -10,6 +10,7 @@ namespace GQ.DAL
     public class QuestionTemplate
     {
         public int Id { get; set; }
+
         public DateTime CreateTime { get; set; }
         
         public string QuestionText { get; set; }

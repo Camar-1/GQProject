@@ -15,24 +15,23 @@ namespace ConsoleApp.GQ
         {
             QuestionService questionService = new QuestionService();
 
-            
+
             List<string> Categories = new List<string> { "Легкие", "Средние", "Тяжелые" };
 
             while (true)
             {
                 Console.WriteLine("Меню:");
-                
-                Console.WriteLine("1. Добавить шаблон вопроса");
-                
-                Console.WriteLine("2. Найти шаблон вопроса");
-                
-                Console.WriteLine("3. Удалить шаблон вопроса");
-                
-                Console.WriteLine("4. Получить список шаблонов вопросов");
 
+                Console.WriteLine("1. Добавить шаблон вопроса");
+
+                Console.WriteLine("2. Удалить шаблон вопроса");
+
+                Console.WriteLine("3. Получить список шаблонов вопросов");
+
+                Console.WriteLine("4. Проверить по ID");
                 Console.WriteLine("5. Выход");
 
-                string  Input = Console.ReadLine();
+                string Input = Console.ReadLine();
 
                 if (int.TryParse(Input, out int Choice))
                 {
@@ -40,11 +39,11 @@ namespace ConsoleApp.GQ
                     {
                         case 1:
                             Console.WriteLine("Введите текст вопроса:");
-                            
+
                             string QuestionText = Console.ReadLine();
 
-                            Console.WriteLine("Введите категорию вопроса:");
-                            
+                            Console.WriteLine("Введите категорию вопроса: 'Легкие', 'Средние', 'Тяжелые'");
+
                             string CategoryInput = Console.ReadLine();
 
                             if (Categories.Contains(CategoryInput))
@@ -65,18 +64,6 @@ namespace ConsoleApp.GQ
                             break;
 
                         case 2:
-                            Console.WriteLine("Введите ID шаблона вопроса:");
-                            if (int.TryParse(Console.ReadLine(), out int TemplateId))
-                            {
-                                questionService.FindTemplateQuestion(TemplateId);
-                            }
-                            else
-                            {
-                                Console.WriteLine("Некорректный ID шаблона вопроса.");
-                            }
-                            break;
-                        
-                        case 3:
                             Console.WriteLine("Введите ID удаления шаблона");
                             if (int.TryParse(Console.ReadLine(), out int DropTemplate))
                             {
@@ -88,7 +75,7 @@ namespace ConsoleApp.GQ
                             }
                             break;
 
-                        case 4:
+                        case 3:
                             var templates = questionService.GetTemplates();
                             foreach (var template in templates)
                             {
@@ -96,7 +83,20 @@ namespace ConsoleApp.GQ
                             }
                             break;
 
-                        
+                        case 4:
+                            
+                            Console.WriteLine("Введите ID шаблона вопроса:");
+                            if (int.TryParse(Console.ReadLine(), out int templateId))
+                            {
+                                questionService.FindByTemplateQuestion(templateId);
+                            }
+                            else
+                            {
+                                Console.WriteLine("Некорректный ID шаблона вопроса.");
+                            }
+                            break;
+
+
 
 
                         case 5:
@@ -114,18 +114,17 @@ namespace ConsoleApp.GQ
                 }
 
                 Console.WriteLine("\nНажмите любую клавишу для продолжения...");
-               
+
                 Console.ReadKey();
-                
+
                 Console.Clear();
+
             }
         }
     }
 }
 
-
-
-
+  
 
         
    

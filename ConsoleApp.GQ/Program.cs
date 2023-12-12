@@ -28,8 +28,7 @@ namespace ConsoleApp.GQ
 
                 Console.WriteLine("3. Получить список шаблонов вопросов");
 
-                Console.WriteLine("4. Проверить по ID");
-                Console.WriteLine("5. Выход");
+                Console.WriteLine("4. Выход");
 
                 string Input = Console.ReadLine();
 
@@ -84,22 +83,6 @@ namespace ConsoleApp.GQ
                             break;
 
                         case 4:
-                            
-                            Console.WriteLine("Введите ID шаблона вопроса:");
-                            if (int.TryParse(Console.ReadLine(), out int templateId))
-                            {
-                                questionService.FindByTemplateQuestion(templateId);
-                            }
-                            else
-                            {
-                                Console.WriteLine("Некорректный ID шаблона вопроса.");
-                            }
-                            break;
-
-
-
-
-                        case 5:
                             Environment.Exit(0);
                             break;
 

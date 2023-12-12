@@ -1,5 +1,4 @@
 ﻿using GQ.DAL;
-using GQ.DAL.Model;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -22,6 +21,7 @@ namespace GQ.BLL
             var result = repository.CreateQuestionTemplate(questionTemplate);
 
             if(questionTemplate!=null)
+               
                 if(result==true)
             {
                 Console.WriteLine("Шаблон добавлен успешно");
@@ -32,9 +32,15 @@ namespace GQ.BLL
            
             else
             {
-                Console.WriteLine("Шаблон не добавился!");
+
+                    Console.WriteLine("Шаблон не добавился!");
+                        
+                       
             }
-            return false;
+             return false;
+            
+            
+           
            
         }
         public bool FindTemplateQuestion(int id)
@@ -56,6 +62,25 @@ namespace GQ.BLL
                 Console.WriteLine("Шаблон не найден!");
                 
             
+            return false;
+        }
+
+        public bool DeleteTemplate(int Id)
+        {
+            Repository repository = new Repository();
+
+            var result = repository.DeleteQuestionTemplate(Id);
+
+            if (result == true)
+            {
+                Console.WriteLine("Шаблон удален");
+                return true;
+            }
+            else
+            {
+                Console.WriteLine("Шаблон не найден");
+
+            }
             return false;
         }
 

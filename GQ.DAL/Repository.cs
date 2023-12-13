@@ -27,6 +27,7 @@ namespace GQ.DAL
             catch (Exception)
 
             {
+                Console.WriteLine("Нет доступа к БД");
                 return false;
 
             }
@@ -47,6 +48,7 @@ namespace GQ.DAL
 
             catch (Exception)
             {
+                Console.WriteLine("Нет доступа к БД");
                 return false;
             }
         }
@@ -64,6 +66,7 @@ namespace GQ.DAL
             }
             catch (Exception)
             {
+                Console.WriteLine("Нет доступа к БД");
                 return false;
             }
         }    
@@ -82,6 +85,7 @@ namespace GQ.DAL
             }
             catch (Exception)
             {
+                Console.WriteLine("Нет доступа к БД");
                 return null;
             }
         }

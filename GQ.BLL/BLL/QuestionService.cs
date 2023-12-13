@@ -1,5 +1,6 @@
 ﻿using GQ.DAL;
 using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.Data;
 using System.IO;
@@ -17,33 +18,40 @@ namespace GQ.BLL
     {
         public bool AddTemplateQuestion(QuestionTemplate questionTemplate)
         {
-            Repository repository = new Repository();
+            try
+            {
+                Repository repository = new Repository();
 
-            var result = repository.CreateQuestionTemplate(questionTemplate);
+                var result = repository.CreateQuestionTemplate(questionTemplate);
 
-            if (questionTemplate != null)
-
-                if (result == true)
+                if (result)
                 {
-                    Console.WriteLine("Шаблон добавлен успешно");
-
+                    Console.WriteLine("Шаблон  добавился");
                     return true;
                 }
-
-
                 else
                 {
-
-                    Console.WriteLine("Шаблон не добавился!");
-
-
+                    Console.WriteLine("Шаблон не добавился, попробуйте еще раз");
+                    return false;
                 }
-            return false;
 
+            }
+
+            catch (Exception ex)
+            {
+                Console.WriteLine("Нет доступа к хосту" + ex);
+                
+                return false ;
+
+            }
+            
         }
+        
 
+    
         public bool DeleteTemplate(int Id)
         {
+                      
             Repository repository = new Repository();
 
             var result = repository.DeleteQuestionTemplate(Id);
@@ -60,6 +68,7 @@ namespace GQ.BLL
             }
             return false;
         }
+
 
         public List<QuestionTemplate> GetTemplates()
         {

@@ -24,10 +24,10 @@ namespace GQ.DAL
                 return true ;
 
             }
-            catch (Exception)
+            catch (Exception ex)
 
             {
-                Console.WriteLine("Нет доступа к БД");
+                Console.WriteLine("Нет доступа к хосту"+ex);
                 return false;
 
             }
@@ -46,9 +46,9 @@ namespace GQ.DAL
                 return true;
             }
 
-            catch (Exception)
+            catch (Exception ex)
             {
-                Console.WriteLine("Нет доступа к БД");
+                Console.WriteLine("Нет доступа к хосту"+ex);
                 return false;
             }
         }
@@ -64,9 +64,9 @@ namespace GQ.DAL
                 }
                 return true;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                Console.WriteLine("Нет доступа к БД");
+                Console.WriteLine("Нет доступа к хосту"+ex);
                 return false;
             }
         }    
@@ -83,9 +83,9 @@ namespace GQ.DAL
                 }
                
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                Console.WriteLine("Нет доступа к БД");
+                Console.WriteLine("Нет доступа к хосту"+ ex);
                 return null;
             }
         }

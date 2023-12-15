@@ -39,50 +39,84 @@ namespace GQ.BLL
 
             catch (Exception ex)
             {
-                Console.WriteLine("Нет доступа к хосту" + ex);
-                
-                return false ;
+                Console.WriteLine("Нет доступа к хосту" + ex.Message);
+
+                return false;
 
             }
-            
-        }
-        
 
-    
+        }
+
+        public bool UpdateTemplate(QuestionTemplate questionTemplate)
+        {
+            try
+            {
+                Repository repository = new Repository();
+                var result = repository.UpdateQuestionTemplate(questionTemplate);
+
+                if (result)
+                {
+                    Console.WriteLine("Шаблон обновился!");
+                    return true;
+                }
+                else
+                {
+                    Console.WriteLine("Шаблоне не удалось обновить");
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Нет доступа к хосту!" + ex.Message);
+                return false;
+            }
+        }
+
+
+
         public bool DeleteTemplate(int Id)
         {
-                      
-            Repository repository = new Repository();
-
-            var result = repository.DeleteQuestionTemplate(Id);
-
-            if (result == true)
+            try
             {
-                Console.WriteLine("Шаблон удален");
-                return true;
-            }
-            else
-            {
-                Console.WriteLine("Шаблон не найден");
+                Repository repository = new Repository();
 
+                var result = repository.DeleteQuestionTemplate(Id);
+
+                if (result == true)
+                {
+                    Console.WriteLine("Шаблон удален");
+                    return true;
+                }
+                else
+                {
+                    Console.WriteLine("Шаблон не найден");
+
+                }
+                return false;
             }
-            return false;
+            catch (Exception ex)
+            {
+                Console.WriteLine("Нет доступа к хосту" + ex.Message);
+                return false;
+            }
         }
 
 
         public List<QuestionTemplate> GetTemplates()
         {
-          
+            try {
 
-            Repository repository = new Repository();
+                Repository repository = new Repository();
 
-            var result  = repository.GetQuestionTemplates();
+                var result = repository.GetQuestionTemplates();
 
-            return result;
-        }
-
-
-      
-       
+                return result;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Нет доступа к хосту!"+ex.Message);
+                return null;
+            }
+            }
     }
 }

@@ -26,7 +26,9 @@ namespace GQ.BLL.BLL
 
                 Console.WriteLine("3. Получить список шаблонов вопросов");
 
-                Console.WriteLine("4. Выход");
+                Console.WriteLine("4. Получить список шаблонов по категории");
+
+                Console.WriteLine("5. Выход");
 
                 string Input = Console.ReadLine();
 

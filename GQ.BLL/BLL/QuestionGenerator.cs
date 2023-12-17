@@ -10,7 +10,7 @@ namespace GQ.BLL.BLL
 {
     public class QuestionGenerator
     {
-        QuestionService questionService = new QuestionService();
+        readonly QuestionService questionService = new QuestionService();
 
         public void ViewGeneratorQuestion()
         {

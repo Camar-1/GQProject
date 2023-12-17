@@ -31,7 +31,7 @@ namespace GQ.BLL
                 }
                 else
                 {
-                    Console.WriteLine("Шаблон не добавился, попробуйте еще раз");
+                    Console.WriteLine("Шаблон не добавился");
                     return false;
                 }
 
@@ -84,27 +84,61 @@ namespace GQ.BLL
 
                 if (result == true)
                 {
-                    Console.WriteLine("Шаблон удален");
+                    Console.WriteLine("Шаблон удален!");
                     return true;
                 }
                 else
                 {
-                    Console.WriteLine("Шаблон не найден");
-
+                    Console.WriteLine("Шаблон не удалось удалить");
+                    return false;
                 }
-                return false;
+
             }
             catch (Exception ex)
             {
                 Console.WriteLine("Нет доступа к хосту" + ex.Message);
                 return false;
+
             }
         }
+
+        public List<QuestionTemplate> GetByCategoryTemplates(QuestionTemplate templates, string category){
+
+            try
+            {
+                Repository repository = new Repository();
+
+                var result = repository.GetQuestionTemplates();
+
+                   foreach (QuestionTemplate template in result)
+                {
+                  if(template.Category == category)
+                    {
+                        return result;
+                    }
+
+                    
+                }
+
+                 return null; 
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine("Пустой"+ex.Message);
+                return null;
+            }
+        }
+            
+
+
+
+
 
 
         public List<QuestionTemplate> GetTemplates()
         {
-            try {
+            try
+            {
 
                 Repository repository = new Repository();
 
@@ -114,9 +148,9 @@ namespace GQ.BLL
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Нет доступа к хосту!"+ex.Message);
+                Console.WriteLine("Нет доступа к хосту!" + ex.Message);
                 return null;
             }
-            }
+        }
     }
 }

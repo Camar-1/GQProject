@@ -101,7 +101,7 @@ namespace GQ.BLL
 
             }
         }
-
+        /*
         public List<QuestionTemplate> GetByCategoryTemplates(QuestionTemplate templates, string category){
 
             try
@@ -129,7 +129,7 @@ namespace GQ.BLL
             }
         }
             
-
+        */
 
 
 

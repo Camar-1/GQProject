@@ -82,7 +82,7 @@ namespace GQ.BLL
 
                 var result = repository.DeleteQuestionTemplate(Id);
 
-                if (result == true)
+                if (result)
                 {
                     Console.WriteLine("Шаблон удален!");
                     return true;

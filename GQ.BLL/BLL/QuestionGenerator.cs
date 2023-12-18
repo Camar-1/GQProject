@@ -10,7 +10,7 @@ namespace GQ.BLL.BLL
 {
     public class QuestionGenerator
     {
-        readonly QuestionService _questionService = new QuestionService();
+        readonly QuestionService questionService = new QuestionService();
 
         public void ViewGeneratorQuestion()
         {
@@ -54,7 +54,7 @@ namespace GQ.BLL.BLL
                                     Category = CategoryInput
                                 };
 
-                                _questionService.AddTemplateQuestion(newTemplate);
+                                questionService.AddTemplateQuestion(newTemplate);
                             }
                             else
                             {
@@ -66,7 +66,7 @@ namespace GQ.BLL.BLL
                             Console.WriteLine("Введите ID удаления шаблона");
                             if (int.TryParse(Console.ReadLine(), out int DropTemplate))
                             {
-                                _questionService.DeleteTemplate(DropTemplate);
+                                questionService.DeleteTemplate(DropTemplate);
                             }
                             else
                             {
@@ -75,7 +75,7 @@ namespace GQ.BLL.BLL
                             break;
 
                         case 3:
-                            var templates = _questionService.GetTemplates();
+                            var templates = questionService.GetTemplates();
                             foreach (var template in templates)
                             {
                                 Console.WriteLine($"ID: {template.Id}, Вопрос: {template.QuestionText}, Категория: {template.Category}");
@@ -87,7 +87,7 @@ namespace GQ.BLL.BLL
 
                             if (Categories.Contains(selectedCategory))
                             {
-                                GetByCategoryTemplates(_questionService.GetTemplates(), selectedCategory);
+                                GetByCategoryTemplates(questionService.GetTemplates(), selectedCategory);
                             }
                             else
                             {

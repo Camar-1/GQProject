@@ -50,7 +50,9 @@ namespace GQ.BLL.BLL
                                 QuestionTemplate newTemplate = new QuestionTemplate
                                 {
                                     CreateTime = DateTime.Now,
+                                    
                                     QuestionText = QuestionText,
+                                    
                                     Category = CategoryInput
                                 };
 
@@ -63,7 +65,9 @@ namespace GQ.BLL.BLL
                             break;
 
                         case 2:
+                            
                             Console.WriteLine("Введите ID удаления шаблона");
+                            
                             if (int.TryParse(Console.ReadLine(), out int DropTemplate))
                             {
                                 questionService.DeleteTemplate(DropTemplate);
@@ -75,15 +79,21 @@ namespace GQ.BLL.BLL
                             break;
 
                         case 3:
-                            var templates = questionService.GetTemplates();
-                            foreach (var template in templates)
+                            
+                            List<QuestionTemplate> templates = questionService.GetTemplates();
+                            
+                            foreach (QuestionTemplate template in templates)
                             {
                                 Console.WriteLine($"ID: {template.Id}, Вопрос: {template.QuestionText}, Категория: {template.Category}");
                             }
                             break;
                         case 4:
-                            Console.WriteLine("Введите категорию для вывода:");
+                           
+                            Console.WriteLine("Введите категорию для вывода: Легкие, Средние, Тяжелые");
+                            
                             string selectedCategory = Console.ReadLine();
+
+                            Console.WriteLine();
 
                             if (Categories.Contains(selectedCategory))
                             {
@@ -124,7 +134,11 @@ namespace GQ.BLL.BLL
                 {
                     if (template.Category == category)
                     {
-                        Console.WriteLine($"ID: {template.Id}, Вопрос: {template.QuestionText}");
+                        Console.WriteLine(); 
+                         
+                        Console.WriteLine($"{category} вопросы:");
+                        
+                        Console.WriteLine($"Вопрос: {template.QuestionText}");
                     }
                 }
             }

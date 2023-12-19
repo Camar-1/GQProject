@@ -10,7 +10,7 @@ namespace GQ.DAL
 {
     public class Repository
     {
-        private string Path = @"C:\Users\TEMP\GeneratorQuestions.db";
+        private string Path = @"C:\Temp\GQ.db";
         public bool CreateQuestionTemplate(QuestionTemplate questionTemplate)//add
         {
             try

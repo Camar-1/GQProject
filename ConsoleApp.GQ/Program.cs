@@ -25,9 +25,7 @@ namespace ConsoleApp.GQ
                 Console.WriteLine("2. Добавить шаблон вопроса");
                 Console.WriteLine("3. Удалить шаблон вопроса");
                 Console.WriteLine("4. Получить список шаблонов по категории");
-               ;
                 Console.WriteLine("5. Выход");
-
                 string input = Console.ReadLine();
 
                 if (int.TryParse(input, out int choice))
@@ -96,25 +94,27 @@ namespace ConsoleApp.GQ
                                         Console.WriteLine($"ID: {template.Id}, Вопрос: {template.QuestionText}, Категория: {template.Category.Name}");
                                     }
                                 }
+
                                 else
                                 {
                                     Console.WriteLine($"Ошибка: {Error}");
                                 }
                             }
+
                             else
                             {
                                 Console.WriteLine("Выбрана новая категория. Введите название новой категории:");
-                                string new22CategoryName = Console.ReadLine();
+                                string newTemplateCategoryName = Console.ReadLine();
 
-                                if (!string.IsNullOrEmpty(new22CategoryName))
+                                if (!string.IsNullOrEmpty(newTemplateCategoryName))
                                 {
-                                    Category new22Category = questionService.GetOrCreateCategory(new22CategoryName);
+                                    Category new22Category = questionService.GetOrCreateCategory(newTemplateCategoryName);
 
                                     if (new22Category != null)
                                     {
-                                        Categories.Add(new22CategoryName);
+                                        Categories.Add(newTemplateCategoryName);
 
-                                        List<QuestionTemplate> categoryTemplates = questionService.GetTemplatesByCategory(new22CategoryName, out Error);
+                                        List<QuestionTemplate> categoryTemplates = questionService.GetTemplatesByCategory(newTemplateCategoryName, out Error);
 
                                         if (categoryTemplates != null)
                                         {

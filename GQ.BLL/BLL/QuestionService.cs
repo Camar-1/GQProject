@@ -29,7 +29,7 @@ namespace GQ.BLL
         }
 
         /// <summary>
-        /// 
+        /// Проверка на наличие шаблона
         /// </summary>
         /// <param name="questionTemplate"></param>
         /// <param name="error"></param>
@@ -61,7 +61,7 @@ namespace GQ.BLL
         }
 
         /// <summary>
-        /// 
+        /// Удаление обьекта
         /// </summary>
         /// <param name="Id"></param>
         /// <param name="error"></param>
@@ -91,7 +91,7 @@ namespace GQ.BLL
         }
 
         /// <summary>
-        /// 
+        /// Получение списка шаблонов по категории
         /// </summary>
         /// <param name="categoryName"></param>
         /// <param name="error"></param>
@@ -114,7 +114,7 @@ namespace GQ.BLL
         }
 
         /// <summary>
-        /// 
+        /// Метод создания категории
         /// </summary>
         /// <param name="category"></param>
         /// <returns></returns>
@@ -130,11 +130,13 @@ namespace GQ.BLL
             }
         } 
         /// <summary>
-        /// 
+        ///  метод, который является как получением, так и предлагает в случае нового шаблона категории, его создать
+        /// // Добавляем новую категорию в HashSet
         /// </summary>
         /// <param name="categoryName"></param>
         /// <returns></returns>
         public Category GetOrCreateCategory(string categoryName)
+
         {
             Category existingCategory = repository.GetCategoryByName(categoryName);
 
@@ -144,7 +146,7 @@ namespace GQ.BLL
             }
             else
             {
-                var newCategory = new Category
+                Category newCategory = new Category
                 {
                     CreateTime = DateTime.Now,
                     Name = categoryName
@@ -152,7 +154,7 @@ namespace GQ.BLL
 
                 repository.CreateCategory(newCategory);
 
-                // Добавляем новую категорию в HashSet
+                
                 categories.Add(categoryName);
 
                 return newCategory;

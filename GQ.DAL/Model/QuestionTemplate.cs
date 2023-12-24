@@ -11,9 +11,10 @@ namespace GQ.DAL
     public class QuestionTemplate
     {
         /// <summary>
-        /// 
+        /// Свойства Шаблона вопросов с получение идентификатора, созданием экземпляра категории шаблона
         /// </summary>
         public int Id { get; set; }
+
 
         public DateTime CreateTime { get; set; }
 

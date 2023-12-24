@@ -20,7 +20,7 @@ namespace GQ.DAL
         }
 
         /// <summary>
-        /// 
+        /// добавление шаблона в  базу данных
         /// </summary>
         /// <param name="questionTemplate"></param>
         /// <returns></returns>
@@ -47,35 +47,11 @@ namespace GQ.DAL
             }
         }
         /// <summary>
-        /// 
+        /// Удаление шаблона по ID
         /// </summary>
         /// <param name="questionTemplate"></param>
         /// <returns></returns>
 
-        public bool UpdateQuestionTemplate(QuestionTemplate questionTemplate)//update
-        {
-            try
-            {
-                using (LiteDatabase db = new LiteDatabase(Path))
-                {
-                    var res = db.GetCollection<QuestionTemplate>("QuestionTemplate");
-
-                    res.Update(questionTemplate);
-                }
-                return true;
-            }
-
-            catch (Exception)
-            { //
-
-                return false;
-            }
-        }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
         public bool DeleteQuestionTemplate(int id)//drop
         {
             try
@@ -94,7 +70,7 @@ namespace GQ.DAL
             }
         }
         /// <summary>
-        /// 
+        /// Создание категории шаблона
         /// </summary>
         /// <param name="category"></param>
         /// <returns></returns>
@@ -116,12 +92,13 @@ namespace GQ.DAL
             }
         }
         /// <summary>
-        /// 
+        /// Получение/добавление нового шаблона если не существует текущий введеный
         /// </summary>
         /// <param name="category"></param>
         /// <returns></returns>
         public List<QuestionTemplate> GetQuestionTemplatesByCategory(Category category)
         {
+
             try
             {
                 using (LiteDatabase db = new LiteDatabase(Path))
@@ -136,7 +113,7 @@ namespace GQ.DAL
             }
         }
         /// <summary>
-        /// 
+        /// Получение по имени
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>

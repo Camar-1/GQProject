@@ -28,6 +28,12 @@ namespace GQ.BLL
             this.categories = categories;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="questionTemplate"></param>
+        /// <param name="error"></param>
+        /// <returns></returns>
         public string AddTemplateQuestion(QuestionTemplate questionTemplate, out string error)
         {
             try
@@ -54,6 +60,12 @@ namespace GQ.BLL
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="Id"></param>
+        /// <param name="error"></param>
+        /// <returns></returns>
         public string DeleteTemplate(int Id, out string error)
         {
             try
@@ -78,29 +90,17 @@ namespace GQ.BLL
             }
         }
 
-        public List<QuestionTemplate> GetTemplates(out string error)
-        {
-            try
-            {
-                var result = repository.GetQuestionTemplates();
-
-                error = "";
-                return result;
-            }
-            catch (Exception ex)
-            {
-                error = "Ошибка при получении шаблонов: " + ex.Message;
-                return null;
-            }
-        }
-
-
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="categoryName"></param>
+        /// <param name="error"></param>
+        /// <returns></returns>
         public List<QuestionTemplate> GetTemplatesByCategory(string categoryName, out string error)
         {
             try
             {
-                var category = GetOrCreateCategory(categoryName);
+                Category category = GetOrCreateCategory(categoryName);
                 var result = repository.GetQuestionTemplatesByCategory(category);
 
                 error = "";
@@ -112,6 +112,12 @@ namespace GQ.BLL
                 return null;
             }
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="category"></param>
+        /// <returns></returns>
         public bool CreateCategory(Category category)
         {
             try
@@ -122,10 +128,15 @@ namespace GQ.BLL
             {
                 return false;
             }
-        } //
+        } 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="categoryName"></param>
+        /// <returns></returns>
         public Category GetOrCreateCategory(string categoryName)
         {
-            var existingCategory = repository.GetCategoryByName(categoryName);
+            Category existingCategory = repository.GetCategoryByName(categoryName);
 
             if (existingCategory != null)
             {

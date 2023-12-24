@@ -19,6 +19,11 @@ namespace GQ.DAL
             this.Path = path;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="questionTemplate"></param>
+        /// <returns></returns>
         public bool CreateQuestionTemplate(QuestionTemplate questionTemplate)//add
         {
             try
@@ -41,6 +46,11 @@ namespace GQ.DAL
 
             }
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="questionTemplate"></param>
+        /// <returns></returns>
 
         public bool UpdateQuestionTemplate(QuestionTemplate questionTemplate)//update
         {
@@ -56,12 +66,16 @@ namespace GQ.DAL
             }
 
             catch (Exception)
-            {
+            { //
 
                 return false;
             }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public bool DeleteQuestionTemplate(int id)//drop
         {
             try
@@ -79,6 +93,11 @@ namespace GQ.DAL
                 return false;
             }
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="category"></param>
+        /// <returns></returns>
         public bool CreateCategory(Category category)
         {
             try
@@ -96,6 +115,11 @@ namespace GQ.DAL
                 return false;
             }
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="category"></param>
+        /// <returns></returns>
         public List<QuestionTemplate> GetQuestionTemplatesByCategory(Category category)
         {
             try
@@ -111,7 +135,11 @@ namespace GQ.DAL
                 return null;
             }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
         public Category GetCategoryByName(string name)
         {
             try
@@ -124,27 +152,6 @@ namespace GQ.DAL
             }
             catch (Exception)
             {
-                return null;
-            }
-        }
-
-
-
-        public List<QuestionTemplate> GetQuestionTemplates() //get
-        {
-            try
-            {
-                using (LiteDatabase db = new LiteDatabase(Path))
-                {
-                    var res = db.GetCollection<QuestionTemplate>();
-
-                    return res.FindAll().ToList();
-                }
-
-            }
-            catch (Exception)
-            {
-
                 return null;
             }
         }

@@ -1,10 +1,12 @@
 ﻿using GQ.DAL;
+using GQ.DAL.Model;
 using System;
 using System.CodeDom;
 using System.Collections.Generic;
 using System.Data;
 using System.IO;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Runtime.InteropServices;
 using System.Runtime.Remoting;
 using System.Runtime.Remoting.Messaging;
@@ -12,145 +14,140 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace GQ.BLL
 {
     public class QuestionService
     {
-        public bool AddTemplateQuestion(QuestionTemplate questionTemplate)
+        private Repository repository;
+        private HashSet<string> categories;
+
+        public QuestionService(Repository repository, HashSet<string> categories)
+        {
+            this.repository = repository;
+            this.categories = categories;
+        }
+
+        public string AddTemplateQuestion(QuestionTemplate questionTemplate, out string error)
         {
             try
             {
-                Repository repository = new Repository();
+                questionTemplate.Category = GetOrCreateCategory(questionTemplate.Category.Name);
 
                 var result = repository.CreateQuestionTemplate(questionTemplate);
 
                 if (result)
                 {
-                    Console.WriteLine("Шаблон  добавился");
-                    return true;
+                    error = "";
+                    return "Шаблон успешно добавлен";
                 }
                 else
                 {
-                    Console.WriteLine("Шаблон не добавился");
-                    return false;
-                }
-
-            }
-
-            catch (Exception ex)
-            {
-                Console.WriteLine("Нет доступа к хосту" + ex.Message);
-
-                return false;
-
-            }
-
-        }
-
-        public bool UpdateTemplate(QuestionTemplate questionTemplate)
-        {
-            try
-            {
-                Repository repository = new Repository();
-                var result = repository.UpdateQuestionTemplate(questionTemplate);
-
-                if (result)
-                {
-                    Console.WriteLine("Шаблон обновился!");
-                    return true;
-                }
-                else
-                {
-                    Console.WriteLine("Шаблоне не удалось обновить");
-                    return false;
+                    error = "";
+                    return "Шаблон не добавлен";
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Нет доступа к хосту!" + ex.Message);
-                return false;
+                error = "Ошибка добавления " + ex.Message;
+                return error;
             }
         }
 
-
-
-        public bool DeleteTemplate(int Id)
+        public string DeleteTemplate(int Id, out string error)
         {
             try
             {
-                Repository repository = new Repository();
-
                 var result = repository.DeleteQuestionTemplate(Id);
 
                 if (result)
                 {
-                    Console.WriteLine("Шаблон удален!");
-                    return true;
+                    error = "";
+                    return "Шаблон удален";
                 }
                 else
                 {
-                    Console.WriteLine("Шаблон не удалось удалить");
-                    return false;
+                    error = "";
+                    return "Шаблон к сожалению не удален";
                 }
-
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Нет доступа к хосту" + ex.Message);
-                return false;
-
+                error = "Ошибка удаления " + ex.Message;
+                return error;
             }
         }
-        /*
-        public List<QuestionTemplate> GetByCategoryTemplates(QuestionTemplate templates, string category){
 
-            try
-            {
-                Repository repository = new Repository();
-
-                var result = repository.GetQuestionTemplates();
-
-                   foreach (QuestionTemplate template in result)
-                {
-                  if(template.Category == category)
-                    {
-                        return result;
-                    }
-
-                    
-                }
-
-                 return null; 
-            }
-            catch(Exception ex)
-            {
-                Console.WriteLine("Пустой"+ex.Message);
-                return null;
-            }
-        }
-            
-        */
-
-
-
-
-
-        public List<QuestionTemplate> GetTemplates()
+        public List<QuestionTemplate> GetTemplates(out string error)
         {
             try
             {
-
-                Repository repository = new Repository();
-
                 var result = repository.GetQuestionTemplates();
 
+                error = "";
                 return result;
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Нет доступа к хосту!" + ex.Message);
+                error = "Ошибка при получении шаблонов: " + ex.Message;
                 return null;
+            }
+        }
+
+
+
+        public List<QuestionTemplate> GetTemplatesByCategory(string categoryName, out string error)
+        {
+            try
+            {
+                var category = GetOrCreateCategory(categoryName);
+                var result = repository.GetQuestionTemplatesByCategory(category);
+
+                error = "";
+                return result;
+            }
+            catch (Exception ex)
+            {
+                error = "Ошибка при получении шаблонов по категории: " + ex.Message;
+                return null;
+            }
+        }
+        public bool CreateCategory(Category category)
+        {
+            try
+            {
+                return repository.CreateCategory(category);
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        } //
+        public Category GetOrCreateCategory(string categoryName)
+        {
+            var existingCategory = repository.GetCategoryByName(categoryName);
+
+            if (existingCategory != null)
+            {
+                return existingCategory;
+            }
+            else
+            {
+                var newCategory = new Category
+                {
+                    CreateTime = DateTime.Now,
+                    Name = categoryName
+                };
+
+                repository.CreateCategory(newCategory);
+
+                // Добавляем новую категорию в HashSet
+                categories.Add(categoryName);
+
+                return newCategory;
             }
         }
     }
 }
+
+

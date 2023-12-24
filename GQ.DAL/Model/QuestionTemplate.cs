@@ -1,4 +1,5 @@
 ﻿using GQ.DAL;
+using GQ.DAL.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,12 +10,17 @@ namespace GQ.DAL
 {
     public class QuestionTemplate
     {
+        /// <summary>
+        /// 
+        /// </summary>
         public int Id { get; set; }
 
         public DateTime CreateTime { get; set; }
-        
+
         public string QuestionText { get; set; }
-     
-        public string Category { get; set; }
+
+        public Category Category { get; set; }
     }
+
 }
+//

@@ -1,5 +1,4 @@
 ﻿using GQ.DAL;
-using GQ.DAL.Model;
 using System;
 using System.CodeDom;
 using System.Collections.Generic;

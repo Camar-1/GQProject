@@ -1,5 +1,4 @@
 ﻿using GQ.DAL;
-using GQ.DAL.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,5 +22,13 @@ namespace GQ.DAL
         public Category Category { get; set; }
     }
 
+
+
+    public class Category
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public DateTime CreateTime { get; set; }
+    }
 }
 //

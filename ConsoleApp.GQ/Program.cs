@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using GQ.BLL;
 using GQ.DAL;
-using GQ.DAL.Model;
+
+
 
 namespace ConsoleApp.GQ
 {
